@@ -2,10 +2,11 @@ const express = require("express");
 const questions = express.Router();
 
 const {
-getAllQuestions, getOneQuestion
+getAllQuestions, getOneQuestion, createAQuestion
 } = require("../queries/questions")
 
 
+const {checkBody} = require("../validations/checkQuestions.js")
 // INDEX
 questions.get("/", async (req, res) => {
     const all_questions = await getAllQuestions();
@@ -27,6 +28,13 @@ questions.get("/:question_id", async (req, res) => {
     }
 })
 
-
+questions.post("/", async (req, res) => {
+  try {
+    const ask_a_question = await createAQuestion(req.body);
+    res.json(ask_a_question);
+  } catch (error) {
+    res.status(400).json({ error: "error" });
+  }
+});
 
 module.exports = questions;

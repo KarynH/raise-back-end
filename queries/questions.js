@@ -19,4 +19,14 @@ const getOneQuestion = async (id) => {
   }
 };
 
-module.exports = { getAllQuestions, getOneQuestion };
+
+const createAQuestion = async (question) => {
+  try {
+    const askAQuestion = await db.one("INSERT INTO QUESTIONS (body, name, todays_date, topic, child_age) VALUES ($1, $2, $3, $4, $5) RETURNING *", 
+    [question.body, question.name, question.todays_date, question.topic, question.child_age ])
+    return askAQuestion;
+  }catch (error) {
+    return error;
+  }
+ }
+module.exports = { getAllQuestions, getOneQuestion, createAQuestion };
