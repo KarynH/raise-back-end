@@ -4,6 +4,7 @@ CREATE DATABASE raise_dev;
 
 DROP TABLE IF EXISTS questions;
 CREATE TABLE questions (
+    id SERIAL PRIMARY KEY,
     body VARCHAR(1000) NOT NULL,
     name VARCHAR(30) NOT NULL,
     todays_date timestamp,
@@ -14,6 +15,7 @@ CREATE TABLE questions (
 
 DROP TABLE IF EXISTS answers; 
 CREATE TABLE answers (
+    id SERIAL PRIMARY KEY,
     response VARCHAR(1000) NOT NULL,
     todays_date timestamp,
     provider_type int,
