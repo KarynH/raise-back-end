@@ -2,7 +2,7 @@ const express = require("express");
 const questions = express.Router();
 
 const {
-getAllQuestions, getOneQuestion, createAQuestion
+getAllQuestions, getOneQuestion, createAQuestion, updateAQuestion
 } = require("../queries/questions")
 
 
@@ -36,5 +36,18 @@ questions.post("/", async (req, res) => {
     res.status(400).json({ error: "error" });
   }
 });
+
+questions.put("/:question_id", async (req, res) => {
+  const {question_id} = req.params;
+  try {
+  const update_question = await updateAQuestion(question_id, req.body);
+  res.status(200).json(update_question)
+  }catch (error) {
+    res.status(404).json({error: "error updating this question"})
+  }
+
+
+})
+
 
 module.exports = questions;
