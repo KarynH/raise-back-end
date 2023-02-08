@@ -9,7 +9,7 @@ const {
   deleteAquestion,
 } = require("../queries/questions");
 
-const { checkBody } = require("../validations/checkQuestions.js");
+const { checkNameAndDate, checkQuestionBody } = require("../validations/checkQuestions.js");
 // INDEX
 questions.get("/", async (req, res) => {
   const all_questions = await getAllQuestions();
@@ -26,11 +26,13 @@ questions.get("/:question_id", async (req, res) => {
   if (one_question) {
     res.status(200).json(one_question);
   } else {
-    res.status(404).json({ error: `bad request for question of id: ${question_id}` });
+    res
+      .status(404)
+      .json({ error: `bad request for question of id: ${question_id}` });
   }
 });
 
-questions.post("/", async (req, res) => {
+questions.post("/", checkQuestionBody, checkNameAndDate, async (req, res) => {
   try {
     const ask_a_question = await createAquestion(req.body);
     res.json(ask_a_question);
