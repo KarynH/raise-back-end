@@ -18,7 +18,7 @@ CREATE TABLE answers (
     id SERIAL PRIMARY KEY,
     response VARCHAR(1000) NOT NULL,
     todays_date timestamp,
-    provider_type int,
+    provider_type TEXT,
     question_id int
 );
 
