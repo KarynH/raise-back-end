@@ -2,4 +2,4 @@
 back-end database using PostgressSQL
 
 ###ERD for the data
-![Screen Shot 2023-02-07 at 11 31 22 AM](https://user-images.githubusercontent.com/96316175/217304954-a8e2ee83-7116-4be9-8d59-911b87cbfc32.png)
+![Screen Shot 2023-02-08 at 5 39 47 PM](https://user-images.githubusercontent.com/96316175/217667562-bfbd8a9d-14e8-4195-8794-1829a577b346.png)
