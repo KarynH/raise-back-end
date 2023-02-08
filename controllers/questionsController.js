@@ -2,7 +2,7 @@ const express = require("express");
 const questions = express.Router();
 
 const {
-getAllQuestions
+getAllQuestions, getOneQuestion
 } = require("../queries/questions")
 
 
@@ -16,6 +16,16 @@ questions.get("/", async (req, res) => {
     }
 
   });
+
+questions.get("/:question_id", async (req, res) => {
+    const {question_id} = req.params;
+    const one_question = await getOneQuestion(question_id);
+    if(one_question) {
+        res.status(200).json(one_question);
+    }else {
+        res.status(404).json({error: `bad request for ${question_id}` })
+    }
+})
 
 
 
