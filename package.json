@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "init": "^0.1.2",
     "nodemon": "^2.0.20",
     "pg-promise": "^11.2.0",
-    "seed": "^0.4.4"
+    "seed": "^0.4.4",
+    "yarn": "^1.22.19"
   }
 }
