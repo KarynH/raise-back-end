@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("*", (req, res) => {
-    res.send("You may be searching for a route that doesn't exist🚏")
+    res.send("You may be searching for a route that doesn't exist 🚏")
 })
 
 
