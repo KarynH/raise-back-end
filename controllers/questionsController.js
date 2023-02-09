@@ -12,7 +12,7 @@ const {
   deleteAquestion,
 } = require("../queries/questions");
 
-const { checkQuestionBody } = require("../validations/checkQuestions.js");
+const { checkQuestionBody, checkName } = require("../validations/checkQuestions.js");
 
 
 questions.get("/", async (req, res) => {
@@ -36,7 +36,7 @@ questions.get("/:question_id", async (req, res) => {
   }
 });
 
-questions.post("/", checkQuestionBody, async (req, res) => {
+questions.post("/", checkQuestionBody, checkName, async (req, res) => {
   try {
     const ask_a_question = await createAquestion(req.body);
     res.json(ask_a_question);
@@ -45,7 +45,7 @@ questions.post("/", checkQuestionBody, async (req, res) => {
   }
 });
 
-questions.put("/:question_id", checkQuestionBody ,async (req, res) => {
+questions.put("/:question_id", checkQuestionBody, checkName ,async (req, res) => {
   const { question_id } = req.params;
   try {
     const update_question = await updateAquestion(question_id, req.body);
