@@ -1,6 +1,9 @@
 const express = require("express");
 const questions = express.Router();
 
+const answersController = require("./answersController");
+questions.use("/:id/answers", answersController);
+
 const {
   getAllQuestions,
   getOneQuestion,
@@ -10,7 +13,8 @@ const {
 } = require("../queries/questions");
 
 const {  checkName, checkQuestionBody } = require("../validations/checkQuestions.js");
-// INDEX
+
+
 questions.get("/", async (req, res) => {
   const all_questions = await getAllQuestions();
   if (all_questions[0]) {
