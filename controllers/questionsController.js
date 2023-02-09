@@ -36,7 +36,7 @@ questions.get("/:question_id", async (req, res) => {
   }
 });
 
-questions.post("/", checkQuestionBody, checkName, async (req, res) => {
+questions.post("/", async (req, res) => {
   try {
     const ask_a_question = await createAquestion(req.body);
     res.json(ask_a_question);
