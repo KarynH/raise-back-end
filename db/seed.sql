@@ -1,4 +1,4 @@
-\c raise_dev;
+
 
 INSERT INTO questions (body, name, todays_date, topic, child_age)
 VALUES ('Help ! What are some alternatives to Huggies diapers???', 'Amy', '02/02/2023', 'Products', '0-1years'),

@@ -1,6 +1,6 @@
 DROP DATABASE IF EXISTS raise_dev;
 CREATE DATABASE raise_dev;
-\c raise_dev;
+
 
 DROP TABLE IF EXISTS questions;
 CREATE TABLE questions (
@@ -22,14 +22,3 @@ CREATE TABLE answers (
     question_id int
 );
 
--- DROP TABLE IF EXISTS profiles;
--- CREATE TABLE profiles (
---     photo IMG TEXT,
---     user_name (VARCHAR(20))
---     bio TEXT NOT NULL
--- );
-
---  DROP TABLE IF EXISTS prompt;
---  CREATE TABLE prompt (
-
---  )
