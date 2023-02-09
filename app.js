@@ -17,6 +17,9 @@ app.get("/", (req, res) => {
     res.send('Welcome to raise');
 });
 
+app.get("*", (req, res) => {
+    res.send("You may be searching for a route that doesn't exist 🚏")
+})
 
 
 module.exports = app;
