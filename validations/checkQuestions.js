@@ -13,7 +13,7 @@
 
 // const checkName = (req, res, next) => {
 //   const {name} = req.body;
-//   console.log("CHHECKING NAME");
+//   console.log("CHECKING NAME");
 //   console.log(`NAME: ${name}`);
 //   if(name !== "") {
 //     next();

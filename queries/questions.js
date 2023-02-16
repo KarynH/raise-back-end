@@ -1,4 +1,4 @@
-const questions = require("../controllers/questionsController");
+// const questions = require("../controllers/questionsController");
 const db = require("../db/dbConfig.js");
 
 const getAllQuestions = async () => {
