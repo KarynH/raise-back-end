@@ -14,6 +14,48 @@ const getAllAnswers = async (questionId) => {
   }
 };
 
+const getAnswer = async (questionId, id) => {
+  try {
+    const oneAnswer = await db.one(
+      "SELECT * FROM answers WHERE id=$1 AND question_id=$2",
+      [questionId, id]
+    );
+    return oneAnswer;
+  } catch (error) {
+    return error;
+  }
+};
+
+const newAnswer = async (answer) => {
+  try {
+    const newAnswer = await db.one(
+      "INSERT INTO answers (question_id, response, todays_date, provider_type) VALUES($1, $2, $3, $4, $5) WHERE question_id=$6 RETURNING *",
+      [
+        answer.question_id,
+        answer.response,
+        answer.todays_date,
+       answer.provider_type,
+       
+      ]
+    );
+    return newAnswer;
+  } catch (error) {
+    return error;
+  }
+};
+
+const deleteAnswer= async (questionId, id) => {
+  try {
+    const deletedAnswer= await db.one(
+      "DELETE FROM answers WHERE id=$1 AND question_id=$2 RETURNING *",
+      [questionId, id]
+    );
+    return deletedAnswer;
+  } catch (error) {
+    return error;
+  }
+};
 
 
-module.exports = { getAllAnswers };
+
+module.exports = { getAllAnswers, getAnswer, deleteAnswer, newAnswer };
