@@ -1,24 +1,28 @@
 const express = require("express");
 const answers = express.Router({ mergeParams: true });
 
-const { getAllAnswers, getAnswer, deleteAnswer, newAnswer } = require("../queries/answers");
+const {
+  getAllAnswers,
+  getAnswer,
+  deleteAnswer,
+  newAnswer,
+} = require("../queries/answers");
 
 answers.get("/", async (req, res) => {
   const { id } = req.params;
+
   const all_answers = await getAllAnswers(id);
-  if (all_answers[0]) {
+  if (all_answers) {
     res.status(200).json(all_answers);
-  }else if(id) {
-    res.status(200).json( {id})
-  }else {
+  } else if (id) {
+    res.status(200).json({ id });
+  } else {
     res.status(200).json({ error: "server errorr" });
   }
 });
 
-
-
 answers.get("/:question_id", async (req, res) => {
-  const { id, question_id } = req.params; 
+  const { id, question_id } = req.params;
   const showAnswer = await getAnswer(id, question_id);
   if (showAnswer) {
     res.json(showAnswer);
@@ -44,4 +48,3 @@ answers.delete("/:answer_id", async (req, res) => {
 });
 
 module.exports = answers;
-
