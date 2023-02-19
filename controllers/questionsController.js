@@ -16,7 +16,7 @@ const {
 
 questions.get("/", async (req, res) => {
   const all_questions = await getAllQuestions();
-  if (all_questions[0]) {
+  if (all_questions) {
     res.status(200).json(all_questions);
   } else {
     res.status(500).json({ error: "server error" });
