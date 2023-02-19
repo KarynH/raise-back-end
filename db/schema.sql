@@ -1,6 +1,6 @@
 DROP DATABASE IF EXISTS raise_dev;
 CREATE DATABASE raise_dev;
-
+\c raise_dev;
 
 DROP TABLE IF EXISTS questions;
 CREATE TABLE questions (
