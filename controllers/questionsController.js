@@ -12,15 +12,12 @@ const {
   deleteAquestion,
 } = require("../queries/questions");
 
-
+const {checkQuestionBody, checkName} = require("../validations/checkQuestions")
 
 questions.get("/", async (req, res) => {
   const all_questions = await getAllQuestions();
-  if (all_questions) {
-    res.status(200).json(all_questions);
-  } else {
-    res.status(500).json({ error: "server error" });
-  }
+
+  res.json(all_questions);
 });
 
 questions.get("/:question_id", async (req, res) => {
@@ -35,7 +32,7 @@ questions.get("/:question_id", async (req, res) => {
   }
 });
 
-questions.post("/",  async (req, res) => {
+questions.post("/", checkQuestionBody, checkName, async (req, res) => {
   try {
     const ask_a_question = await createAquestion(req.body);
     res.json(ask_a_question);
@@ -44,7 +41,7 @@ questions.post("/",  async (req, res) => {
   }
 });
 
-questions.put("/:question_id",async (req, res) => {
+questions.put("/:question_id", async (req, res) => {
   const { question_id } = req.params;
   try {
     const update_question = await updateAquestion(question_id, req.body);
